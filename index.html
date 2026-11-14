@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laptop &amp; phụ kiện gaming – GEARVN (bản cải tiến)</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <!-- ===== Đầu trang ===== -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">GEARVN</a>
+      <a class="site-header__cart" href="gio-hang.html" aria-label="Xem giỏ hàng">
+        <svg class="site-header__cart-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 4h2l2.4 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="10" cy="20" r="1.5" fill="currentColor"/>
+          <circle cx="17" cy="20" r="1.5" fill="currentColor"/>
+        </svg>
+        <span class="site-header__badge" id="cart-badge">1</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== Danh mục sản phẩm ===== -->
+  <nav class="category-bar" aria-label="Danh mục sản phẩm">
+    <ul class="category-bar__list">
+      <li><button class="category-bar__btn" type="button" data-category="all" aria-pressed="true">Tất cả</button></li>
+      <li><button class="category-bar__btn" type="button" data-category="laptop" aria-pressed="false">Laptop</button></li>
+      <li><button class="category-bar__btn" type="button" data-category="man-hinh" aria-pressed="false">Màn hình</button></li>
+      <li><button class="category-bar__btn" type="button" data-category="ban-phim-chuot" aria-pressed="false">Bàn phím, chuột</button></li>
+      <li><button class="category-bar__btn" type="button" data-category="tai-nghe" aria-pressed="false">Tai nghe</button></li>
+    </ul>
+  </nav>
+
+  <main class="page">
+    <!-- ===== Tiêu đề trang ===== -->
+    <header class="page__header">
+      <p class="page__crumb"><a href="index.html">Trang chủ</a> <span aria-hidden="true">/</span> Gaming</p>
+      <h1 class="page__title">Laptop &amp; phụ kiện gaming</h1>
+      <p class="page__lead">Chọn sản phẩm rồi bấm biểu tượng giỏ hàng để xem tóm tắt đơn hàng.</p>
+    </header>
+
+    <!-- ===== Khu vực sản phẩm ===== -->
+    <section class="products" aria-labelledby="products-title">
+      <div class="products__bar">
+        <h2 id="products-title" class="section-title">Sản phẩm nổi bật</h2>
+        <p class="products__count" id="products-count" aria-live="polite">6 sản phẩm</p>
+      </div>
+
+      <ul class="product-grid">
+        <li class="product-card" data-id="acer-nitro" data-category="laptop">
+          <div class="product-card__media">
+            <img class="product-card__img" src="images/product-demo.jpg" alt="Laptop gaming Acer Nitro ProPanel ANV16" width="120" height="90">
+            <span class="badge badge--sale product-card__tag">−26%</span>
+          </div>
+          <h3 class="product-card__name">Laptop gaming Acer Nitro ProPanel ANV16-I12-53VH</h3>
+          <p class="product-card__spec">Core 5-205H / RTX 3050 4GB / 16GB / 512GB / 16" FHD 165Hz</p>
+          <p class="product-card__price">
+            <span class="price price--new">27.290.000đ</span>
+            <del class="price price--old">36.990.000đ</del>
+          </p>
+          <p class="product-card__gift"><span class="badge badge--free">Tặng 3 quà</span></p>
+          <button class="btn btn--primary btn--block" type="button" data-add>Thêm vào giỏ</button>
+        </li>
+
+        <li class="product-card" data-id="man-hinh" data-category="man-hinh">
+          <div class="product-card__media">
+            <img class="product-card__img" src="images/man-hinh.svg" alt="Màn hình gaming 24 inch IPS 144Hz" width="120" height="90">
+          </div>
+          <h3 class="product-card__name">Màn hình gaming 24" IPS 144Hz</h3>
+          <p class="product-card__spec">Full HD / 1ms / FreeSync</p>
+          <p class="product-card__price"><span class="price price--new">3.490.000đ</span></p>
+          <button class="btn btn--primary btn--block" type="button" data-add>Thêm vào giỏ</button>
+        </li>
+
+        <li class="product-card" data-id="ban-phim" data-category="ban-phim-chuot">
+          <div class="product-card__media">
+            <img class="product-card__img" src="images/ban-phim.svg" alt="Bàn phím cơ không dây layout 75%" width="120" height="90">
+          </div>
+          <h3 class="product-card__name">Bàn phím cơ không dây 75%</h3>
+          <p class="product-card__spec">Bluetooth + 2.4GHz / Hot-swap</p>
+          <p class="product-card__price"><span class="price price--new">1.290.000đ</span></p>
+          <button class="btn btn--primary btn--block" type="button" data-add>Thêm vào giỏ</button>
+        </li>
+
+        <li class="product-card" data-id="tai-nghe" data-category="tai-nghe">
+          <div class="product-card__media">
+            <img class="product-card__img" src="images/tai-nghe.svg" alt="Tai nghe gaming âm thanh vòm 7.1" width="120" height="90">
+          </div>
+          <h3 class="product-card__name">Tai nghe gaming 7.1</h3>
+          <p class="product-card__spec">Âm thanh vòm / Micro chống ồn</p>
+          <p class="product-card__price"><span class="price price--new">890.000đ</span></p>
+          <button class="btn btn--primary btn--block" type="button" data-add>Thêm vào giỏ</button>
+        </li>
+
+        <li class="product-card" data-id="chuot" data-category="ban-phim-chuot">
+          <div class="product-card__media">
+            <img class="product-card__img" src="images/chuot.svg" alt="Chuột gaming có dây" width="120" height="90">
+          </div>
+          <h3 class="product-card__name">Chuột gaming có dây 26.000 DPI</h3>
+          <p class="product-card__spec">Nặng 63g / 6 nút lập trình</p>
+          <p class="product-card__price"><span class="price price--new">590.000đ</span></p>
+          <button class="btn btn--primary btn--block" type="button" data-add>Thêm vào giỏ</button>
+        </li>
+
+        <li class="product-card" data-id="lot-chuot" data-category="ban-phim-chuot">
+          <div class="product-card__media">
+            <img class="product-card__img" src="images/lot-chuot.svg" alt="Lót chuột cỡ lớn XL viền đỏ" width="120" height="90">
+          </div>
+          <h3 class="product-card__name">Lót chuột cỡ lớn XL</h3>
+          <p class="product-card__spec">90 × 40 cm / Viền may chống sờn</p>
+          <p class="product-card__price"><span class="price price--new">250.000đ</span></p>
+          <button class="btn btn--primary btn--block" type="button" data-add>Thêm vào giỏ</button>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Bản cải tiến giao diện phục vụ bài tập môn Thương mại điện tử (UEH). Ngoài dữ liệu laptop Acer Nitro, các sản phẩm, giá, phí vận chuyển, mã giảm giá và hình ảnh đều là minh họa, không phải dữ liệu thật của GEARVN.</p>
+  </footer>
+
+  <!-- Thông báo ngắn sau mỗi thao tác -->
+  <p class="toast" id="toast" role="status" aria-live="polite"></p>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Giỏ hàng – GEARVN (bản cải tiến)</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body class="cart-page">
+  <!-- ===== Đầu trang ===== -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">GEARVN</a>
+      <a class="site-header__cart" href="gio-hang.html" aria-label="Xem giỏ hàng" aria-current="page">
+        <svg class="site-header__cart-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 4h2l2.4 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="10" cy="20" r="1.5" fill="currentColor"/>
+          <circle cx="17" cy="20" r="1.5" fill="currentColor"/>
+        </svg>
+        <span class="site-header__badge" id="cart-badge">1</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- ===== Tiêu đề trang ===== -->
+    <header class="page__header">
+      <p class="page__crumb"><a href="index.html">Trang chủ</a> <span aria-hidden="true">/</span> Giỏ hàng</p>
+      <h1 class="page__title">Giỏ hàng của bạn</h1>
+      <p class="page__lead"><a class="page__back" href="index.html">← Tiếp tục mua sắm</a></p>
+    </header>
+
+    <div class="cart-layout">
+      <!-- ===== Danh sách sản phẩm trong giỏ ===== -->
+      <section class="cart-list" aria-labelledby="cart-title">
+        <h2 id="cart-title" class="section-title" tabindex="-1">Sản phẩm đã chọn</h2>
+        <ul class="cart-list__items" id="cart-items">
+          <!-- JS vẽ từ mẫu #cart-item-tpl -->
+        </ul>
+        <p class="cart-list__empty" id="cart-empty" hidden>
+          Giỏ hàng đang trống. <a href="index.html">Chọn sản phẩm</a>
+        </p>
+      </section>
+
+      <!-- ===== Tóm tắt đơn hàng (phần cải tiến): đọc như hóa đơn ===== -->
+      <section class="cart-summary" aria-labelledby="summary-title">
+        <header class="cart-summary__header">
+          <h2 id="summary-title" class="section-title">Tóm tắt đơn hàng</h2>
+          <p class="cart-summary__count" id="cart-count">1 sản phẩm + 3 quà tặng</p>
+        </header>
+
+        <!-- 1. Quà tặng kèm laptop (thu gọn/mở được) -->
+        <details class="cart-summary__gifts" id="cart-gifts" open>
+          <summary class="cart-summary__gifts-toggle">Quà tặng kèm (<span id="gift-count">3</span>)</summary>
+          <ul class="gift-list">
+            <li class="gift-list__item">
+              <img class="gift-list__img" src="images/balo.svg" alt="" width="40" height="30">
+              <span class="gift-list__name">Balo Acer Predator SUV</span>
+              <span class="badge badge--free">Miễn phí</span>
+            </li>
+            <li class="gift-list__item">
+              <img class="gift-list__img" src="images/chuot.svg" alt="" width="40" height="30">
+              <span class="gift-list__name">Chuột Logitech G304 Wireless</span>
+              <span class="badge badge--free">Miễn phí</span>
+            </li>
+            <li class="gift-list__item">
+              <img class="gift-list__img" src="images/tui-chong-soc.svg" alt="" width="40" height="30">
+              <span class="gift-list__name">Túi chống sốc GearVN 15''</span>
+              <span class="badge badge--free">Miễn phí</span>
+            </li>
+          </ul>
+        </details>
+
+        <!-- 2. Mã giảm giá -->
+        <form class="coupon" id="coupon-form" novalidate>
+          <label class="coupon__label" for="coupon-input">Mã giảm giá</label>
+          <div class="coupon__row">
+            <input class="coupon__input" id="coupon-input" name="coupon" type="text"
+                   autocomplete="off" placeholder="Nhập mã giảm giá"
+                   aria-describedby="coupon-hint coupon-msg">
+            <button class="btn btn--outline" type="submit">Áp dụng</button>
+          </div>
+          <p class="coupon__hint" id="coupon-hint">Mã dùng thử: GIAM200K (minh họa)</p>
+          <p class="coupon__msg" id="coupon-msg" role="status" aria-live="polite"></p>
+        </form>
+
+        <!-- 3. Chi tiết thanh toán -->
+        <dl class="cart-summary__details">
+          <div class="cart-summary__row">
+            <dt>Giá niêm yết</dt>
+            <dd class="amount" id="list-total">36.990.000đ</dd>
+          </div>
+          <div class="cart-summary__row" id="product-discount-row">
+            <dt>Giảm giá sản phẩm <span class="cart-summary__note">(giá niêm yết − giá bán)</span></dt>
+            <dd class="amount amount--discount" id="product-discount">−9.700.000đ</dd>
+          </div>
+          <div class="cart-summary__row">
+            <dt>Ưu đãi HSSV <span class="cart-summary__note">(1%, tối đa 500.000đ)</span></dt>
+            <dd class="amount amount--discount" id="student-discount">−272.900đ</dd>
+          </div>
+          <div class="cart-summary__row" id="coupon-row" hidden>
+            <dt>Mã giảm giá <span class="cart-summary__note" id="coupon-row-code"></span></dt>
+            <dd class="amount amount--discount" id="coupon-row-amount">−0đ</dd>
+          </div>
+          <div class="cart-summary__row cart-summary__row--subtotal">
+            <dt>Tạm tính</dt>
+            <dd class="amount" id="subtotal">27.017.100đ</dd>
+          </div>
+          <div class="cart-summary__row">
+            <dt>Phí vận chuyển <span class="cart-summary__note">(minh họa)</span></dt>
+            <dd class="amount">Miễn phí</dd>
+          </div>
+        </dl>
+
+        <!-- 4. Tổng thanh toán + nút xác nhận (dính đáy trên điện thoại) -->
+        <form class="checkout-bar" id="order-form">
+          <div class="checkout-bar__total">
+            <span class="checkout-bar__label">Tổng thanh toán</span>
+            <span class="checkout-bar__amount" id="total">27.017.100đ</span>
+          </div>
+          <p class="checkout-bar__saving">Bạn tiết kiệm được <strong id="saving">9.972.900đ</strong></p>
+          <button class="btn btn--primary checkout-bar__btn" id="order-btn" type="submit">Xác nhận đơn</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Bản cải tiến giao diện phục vụ bài tập môn Thương mại điện tử (UEH). Ngoài dữ liệu laptop Acer Nitro, các sản phẩm, giá, phí vận chuyển, mã giảm giá và hình ảnh đều là minh họa, không phải dữ liệu thật của GEARVN.</p>
+  </footer>
+
+  <p class="toast" id="toast" role="status" aria-live="polite"></p>
+
+  <!-- Mẫu một dòng sản phẩm trong giỏ (JS nhân bản) -->
+  <template id="cart-item-tpl">
+    <li class="cart-item">
+      <img class="cart-item__thumb" src="" alt="" width="96" height="72">
+      <div class="cart-item__info">
+        <p class="cart-item__name"></p>
+        <p class="cart-item__price">
+          <span class="price price--new"></span>
+          <del class="price price--old"></del>
+        </p>
+        <div class="cart-item__actions">
+          <div class="qty" role="group">
+            <button class="qty__btn" type="button" data-dec>−</button>
+            <span class="qty__value" aria-live="polite"></span>
+            <button class="qty__btn" type="button" data-inc>+</button>
+          </div>
+          <button class="btn-link" type="button" data-remove>Xóa</button>
+        </div>
+      </div>
+    </li>
+  </template>
+</body>
+</html>
